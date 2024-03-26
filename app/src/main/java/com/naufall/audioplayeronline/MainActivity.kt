@@ -1,5 +1,6 @@
 package com.naufall.audioplayeronline
 
+import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.widget.SeekBar
 import android.widget.Toast
 import com.naufall.audioplayeronline.databinding.ActivityMainBinding
 import com.naufall.audioplayeronline.model.Song
+import com.naufall.audioplayeronline.othermediaplayer.ExoPlayerActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -66,6 +68,9 @@ class MainActivity : AppCompatActivity() {
         adapter.setList(songList)
         binding.rvSongs.adapter = adapter
 
+        binding.btnExoPlayer.setOnClickListener {
+            startActivity(Intent(this, ExoPlayerActivity::class.java))
+        }
     }
 
     fun playSong(url: String, seekBar: SeekBar, button: ImageButton) {
